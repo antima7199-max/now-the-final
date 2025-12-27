@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Aadi ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{overflow:hidden;}
+
+.page{
+    width:100vw;height:100vh;
+    display:none;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+    animation:fade 1.4s ease;
+}
+.page.active{display:flex;}
+
+h1{
+    font-family:'Great Vibes',cursive;
+    font-size:60px;
+    animation:pop 1.5s ease;
+}
+p{
+    font-size:18px;
+    max-width:760px;
+    margin-top:15px;
+    line-height:1.7;
+    animation:slide 1.5s ease;
+}
+
+button{
+    margin-top:30px;
+    padding:12px 32px;
+    border:none;border-radius:30px;
+    font-size:18px;
+    background:linear-gradient(45deg,#ff4d6d,#ff9a9e);
+    color:white;
+    cursor:pointer;
+}
+
+/* Backgrounds */
+#p1{background:linear-gradient(135deg,#ff758f,#ff7eb3);}
+#p2{background:linear-gradient(135deg,#667eea,#764ba2);}
+#p3{background:linear-gradient(135deg,#ff9966,#ff5e62);}
+#p4{background:linear-gradient(135deg,#43cea2,#185a9d);}
+#p5{background:linear-gradient(135deg,#8360c3,#2ebf91);}
+#p6{background:linear-gradient(135deg,#f7971e,#ffd200);}
+#p7{background:linear-gradient(135deg,#ff512f,#dd2476);}
+
+/* Animations */
+@keyframes pop{from{transform:scale(0.8);}to{transform:scale(1);}}
+@keyframes fade{from{opacity:0;}to{opacity:1;}}
+@keyframes slide{from{transform:translateY(40px);opacity:0;}to{transform:translateY(0);opacity:1;}}
+
+/* Hearts */
+.heart{
+    position:absolute;
+    color:rgba(255,255,255,0.5);
+    animation:float 8s linear infinite;
+}
+@keyframes float{
+    0%{transform:translateY(100vh);opacity:0;}
+    20%{opacity:1;}
+    100%{transform:translateY(-10vh);opacity:0;}
+}
+
+/* Photo */
+.photo{
+    width:220px;height:220px;
+    border-radius:50%;
+    border:6px solid white;
+    object-fit:cover;
+}
+
+/* Game */
+.choice{
+    padding:14px 24px;
+    margin:10px;
+    background:white;
+    color:#ff4d6d;
+    border-radius:30px;
+    font-weight:bold;
+    cursor:pointer;
+    animation:pop 1.2s infinite alternate;
+}
+
+/* Letter */
+.envelope{
+    font-size:90px;
+    cursor:pointer;
+    animation:pop 1.5s infinite alternate;
+}
+.letter{
+    background:white;
+    color:#333;
+    padding:30px;
+    border-radius:20px;
+    max-width:700px;
+}
+.hidden{display:none;}
+
+.big{
+    font-size:80px;
+    font-family:'Great Vibes',cursive;
+}
+</style>
+</head>
+
+<body onclick="startMusic()">
+
+<!-- 🎵 BACKGROUND MUSIC -->
+<audio id="bgMusic" loop>
+    <source src="song.jpg.mp3" type="audio/mpeg">
+</audio>
+
+<!-- PAGE 1 -->
+<div class="page active" id="p1">
+<h1>Happy Birthday Aadi 🎉</h1>
+<p>
+One of the best persons I’ve ever met 💙<br>
+Thank you for being in my life.<br>
+May your days always be full of happiness ✨
+</p>
+<button onclick="next()">Next 💫</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="p2">
+<img src="Aadi.jpg.jpeg" class="photo">
+<p>
+Some people make life brighter<br>
+just by being in it 🌟<br>
+You are one of them.
+</p>
+<button onclick="next()">Next ❤️</button>
+</div>
+
+<!-- PAGE 3 (SHAYARI) -->
+<div class="page" id="p3">
+<h1>Just A Few Lines ✨</h1>
+<p>
+Zyada alfaaz nahi chahiye kehne ke liye,<br>
+Tumhara hona hi kaafi hai 💫<br>
+Bas khush raho, muskurate raho,<br>
+Yehi dua hai dil se.
+</p>
+<button onclick="next()">Next 🌸</button>
+</div>
+
+<!-- PAGE 4 (VIDEO) -->
+<div class="page" id="p4">
+<h1>Birthday Blessings 🎂</h1>
+<video width="320" autoplay loop controls style="border-radius:20px">
+<source src="aadi.jpg.mp4" type="video/mp4">
+</video>
+<p>
+May your life be filled with peace,<br>
+success and endless smiles 💙
+</p>
+<button onclick="next()">Next 🎁</button>
+</div>
+
+<!-- PAGE 5 (GAME) -->
+<div class="page" id="p5">
+<h1>Choose One 💕</h1>
+<div class="choice" onclick="choose('Smile 😊')">Smile 😊</div>
+<div class="choice" onclick="choose('Hug 🤗')">Hug 🤗</div>
+<div class="choice" onclick="choose('Love ❤️')">Love ❤️</div>
+<p id="choiceText" class="hidden"></p>
+<button onclick="next()">Next ✨</button>
+</div>
+
+<!-- PAGE 6 (LETTER) -->
+<div class="page" id="p6">
+<h1>A Letter For You 💌</h1>
+<div class="envelope" onclick="openLetter()">✉️</div>
+
+<div id="letterBox" class="letter hidden">
+<p>
+Dear Aadi,<br><br>
+The love, care and warmth you give so naturally
+has brought so much joy into my life.<br><br>
+You make things better just by being you.
+You truly deserve all the happiness in the world.<br><br>
+Always stay the way you are 💛
+</p>
+</div>
+
+<button onclick="next()">Final Surprise 💖</button>
+</div>
+
+<!-- PAGE 7 -->
+<div class="page" id="p7">
+<h1 class="big">I Love You So Much ❤️</h1>
+<p>
+More than words.<br>
+More than moments.<br>
+Always and forever 💕<br><br>
+Happy Birthday Aadi 🎉
+</p>
+</div>
+
+<script>
+let i=0;
+const pages=document.querySelectorAll(".page");
+const music=document.getElementById("bgMusic");
+let started=false;
+
+function startMusic(){
+    if(!started){
+        music.play();
+        started=true;
+    }
+}
+
+function next(){
+    pages[i].classList.remove("active");
+    i++;
+    pages[i].classList.add("active");
+}
+
+function choose(text){
+    const el=document.getElementById("choiceText");
+    el.innerHTML="You chose <b>"+text+"</b> 💖<br>Perfect choice!";
+    el.classList.remove("hidden");
+}
+
+function openLetter(){
+    document.getElementById("letterBox").classList.remove("hidden");
+}
+
+/* Floating Hearts */
+for(let h=0;h<50;h++){
+    let heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="❤";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(Math.random()*18+12)+"px";
+    heart.style.animationDuration=(Math.random()*5+5)+"s";
+    document.body.appendChild(heart);
+}
+</script>
+
+</body>
+</html>
